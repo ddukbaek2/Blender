@@ -2,9 +2,23 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"label": "echo",
+			"label": "BUILD",
 			"type": "shell",
-			"command": "echo Hello"
+			"command": "${workspaceFolder}/tools/build.bat",
+			"args": [
+				"${workspaceFolder}",
+				"${workspaceFolder}/framework/app.py",
+				"conversion_model_validator",
+				"true"
+			],
+			"runOptions": {
+				"instanceLimit": 1
+			},
+			"problemMatcher": [],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
 		}
 	]
 }
