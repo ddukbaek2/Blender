@@ -1,0 +1,43 @@
+{
+    "python.defaultInterpreterPath": "C:/Program Files/Blender Foundation/Blender 4.0/4.0/Python/bin/python.exe",
+    "python.autoComplete.extraPaths": [
+        "C:/Program Files/Blender Foundation/Blender 4.0/4.0/scripts/startup",
+        "C:/Program Files/Blender Foundation/Blender 4.0/4.0/scripts/modules",
+        "C:/Program Files/Blender Foundation/Blender 4.0/python310.zip",
+        "C:/Program Files/Blender Foundation/Blender 4.0/4.0/python/bin",
+        "C:/Program Files/Blender Foundation/Blender 4.0/4.0/python/DLLs",
+        "C:/Program Files/Blender Foundation/Blender 4.0/4.0/python/libs",
+        "C:/Program Files/Blender Foundation/Blender 4.0/4.0/python",
+        "C:/Program Files/Blender Foundation/Blender 4.0/4.0/python/lib/site-packages",
+        "C:/Program Files/Blender Foundation/Blender 4.0/4.0/scripts/freestyle/modules",
+        "C:/Program Files/Blender Foundation/Blender 4.0/4.0/scripts/addons/modules",
+        "C:/Program Files/Blender Foundation/Blender 4.0/4.0/scripts/addons",
+        "C:/Program Files/Blender Foundation/Blender 4.0/4.0/scripts/addons_contrib",
+        "${userHome}/AppData/Roaming/Python/Python310/site-packages",
+        "${userHome}/AppData/Roaming/Blender Foundation/Blender/4.0/scripts/addons/modules",
+        "./framework",
+        "./src"
+    ],
+    "python.analysis.extraPaths": [
+        "C:/Program Files/Blender Foundation/Blender 4.0/4.0/scripts/startup",
+        "C:/Program Files/Blender Foundation/Blender 4.0/4.0/scripts/modules",
+        "C:/Program Files/Blender Foundation/Blender 4.0/python310.zip",
+        "C:/Program Files/Blender Foundation/Blender 4.0/4.0/python/bin",
+        "C:/Program Files/Blender Foundation/Blender 4.0/4.0/python/DLLs",
+        "C:/Program Files/Blender Foundation/Blender 4.0/4.0/python/libs",
+        "C:/Program Files/Blender Foundation/Blender 4.0/4.0/python",
+        "C:/Program Files/Blender Foundation/Blender 4.0/4.0/python/lib/site-packages",
+        "C:/Program Files/Blender Foundation/Blender 4.0/4.0/scripts/freestyle/modules",
+        "C:/Program Files/Blender Foundation/Blender 4.0/4.0/scripts/addons/modules",
+        "C:/Program Files/Blender Foundation/Blender 4.0/4.0/scripts/addons",
+        "C:/Program Files/Blender Foundation/Blender 4.0/4.0/scripts/addons_contrib",
+        "${userHome}/AppData/Roaming/Python/Python310/site-packages",
+        "${userHome}/AppData/Roaming/Blender Foundation/Blender/4.0/scripts/addons/modules",
+        "./framework",
+        "./src"
+    ],
+
+    "editor.insertSpaces": false,
+    "terminal.integrated.showExitAlert": false,
+    "editor.tabSize": 4
+}
