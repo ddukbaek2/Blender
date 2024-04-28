@@ -1,29 +1,6 @@
 {
 	"version": "2.0.0",
 	"tasks": [
-		{
-			"label": "Debugger",
-			"type": "shell",
-			"command": "powershell.exe",
-			"args": [
-                "-NoProfile",
-                "-ExecutionPolicy",
-                "Bypass",
-                "-Command",
-				"& '${workspaceFolder}/tools/run.bat' '${workspaceFolder}' '${workspaceFolder}/tools/debugger.py', 'conversion_model_validator'"
-            ],
-			"runOptions": {
-				"instanceLimit": 1
-			},
-            "problemMatcher": [],
-            "presentation": {
-                "reveal": "always",
-                "focus": false,
-                "panel": "shared",
-                "showReuseMessage": true,
-                "clear": false
-            }
-		},
         {
 			"label": "Build",
 			"type": "shell",
@@ -33,7 +10,7 @@
                 "-ExecutionPolicy",
                 "Bypass",
                 "-Command",
-				"& '${workspaceFolder}/tools/build.bat' '${workspaceFolder}' '${workspaceFolder}/framework/app.py', 'conversion_model_validator'"
+				"& '${workspaceFolder}/tools/build.bat' '${workspaceFolder}' '${workspaceFolder}/src/app.py', 'conversion_model_validator'"
             ],
 			"runOptions": {
 				"instanceLimit": 1

@@ -1,43 +1,13 @@
 {
-    // IntelliSense를 사용하여 가능한 특성에 대해 알아보세요.
-    // 기존 특성에 대한 설명을 보려면 가리킵니다.
-    // 자세한 내용을 보려면 https://go.microsoft.com/fwlink/?linkid=830387을(를) 방문하세요.
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Blender",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal"
-        },
-        {
-            "name": "Run (Legacy)",
-            "type": "PowerShell",
-            "request": "launch",
-            "script": "${workspaceFolder}/tools/run.bat",
-            "args": [
-                "${workspaceFolder}",
-                "${workspaceFolder}/framework/app.py",
-                "conversion_model_validator",
-            ],
-            "cwd": "${workspaceFolder}"
-        },
-        {
             "name": "Debug",
             "type": "debugpy",
-            "preLaunchTask": "Debugger",
-            "request": "attach",
-            "connect": {
-                "host": "localhost",
-                "port": 5680
-            },
-            "pathMappings": [
-                {
-                    "localRoot": "${workspaceFolder}",
-                    "remoteRoot": "."
-                }
-            ]
+            "request": "launch",
+            "args": ["${workspaceFolder}", "conversion_model_validator"],
+            "program": "${workspaceFolder}/src/app.py",// ${file}
+            "console": "integratedTerminal"
         }
     ]
 }
