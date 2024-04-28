@@ -52,11 +52,11 @@ if __name__ == "__main__":
 	# 실행파일 호출.
 	args = sys.argv[2:]
 	print("hello blender")
-	# if applicationType == "conversion_model_validator":
-	# 	print("conversion_model_validator()")
-	# 	import conversion_model_validator
-	# 	conversion_model_validator.main(args)
-	# elif applicationType == "conversion_template_generator":
-	# 	print("conversion_template_generator()")
-	# 	import conversion_template_generator
-	# 	conversion_template_generator.main(args)
+	if applicationType == "conversion_model_validator":
+		print("conversion_model_validator()")
+		import conversion_model_validator
+		conversion_model_validator.main(args)
+	elif applicationType == "conversion_template_generator":
+		print("conversion_template_generator()")
+		import conversion_template_generator
+		conversion_template_generator.main(args)

@@ -4,20 +4,29 @@
 		{
 			"label": "Build",
 			"type": "shell",
-			"command": "${workspaceFolder}/tools/build.bat",
+			"command": "powershell.exe",
 			"args": [
-				"${workspaceFolder}",
-				"${workspaceFolder}/framework/app.py",
-				"conversion_model_validator",
-			],
+                "-NoProfile",
+                "-ExecutionPolicy",
+                "Bypass",
+                "-Command",
+				"& '${workspaceFolder}/tools/build.bat' '${workspaceFolder}' '${workspaceFolder}/framework/app.py', 'conversion_model_validator'"
+            ],
 			"runOptions": {
 				"instanceLimit": 1
 			},
-			"problemMatcher": [],
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			}
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            }
 		}
 	]
 }

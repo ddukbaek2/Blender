@@ -1,5 +1,4 @@
-shapely
-mathutils
 pyinstaller
 pillow
 ptvsd
+shapely
