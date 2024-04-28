@@ -6,6 +6,24 @@ import importlib.util
 import pathlib
 
 
+extraPaths = [
+        "C:/Program Files/Blender Foundation/Blender 4.0/4.0/scripts/startup",
+        "C:/Program Files/Blender Foundation/Blender 4.0/4.0/scripts/modules",
+        "C:/Program Files/Blender Foundation/Blender 4.0/python310.zip",
+        "C:/Program Files/Blender Foundation/Blender 4.0/4.0/python/bin",
+        "C:/Program Files/Blender Foundation/Blender 4.0/4.0/python/DLLs",
+        "C:/Program Files/Blender Foundation/Blender 4.0/4.0/python/libs",
+        "C:/Program Files/Blender Foundation/Blender 4.0/4.0/python",
+        "C:/Program Files/Blender Foundation/Blender 4.0/4.0/python/lib/site-packages",
+        "C:/Program Files/Blender Foundation/Blender 4.0/4.0/scripts/freestyle/modules",
+        "C:/Program Files/Blender Foundation/Blender 4.0/4.0/scripts/addons/modules",
+        "C:/Program Files/Blender Foundation/Blender 4.0/4.0/scripts/addons",
+        "C:/Program Files/Blender Foundation/Blender 4.0/4.0/scripts/addons_contrib",
+        "${userHome}/AppData/Roaming/Python/Python310/site-packages",
+        "${userHome}/AppData/Roaming/Blender Foundation/Blender/4.0/scripts/addons/modules",
+        "./src"
+    ]
+
 #------------------------------------------------------------------------
 # 스크립트 임포트.
 #------------------------------------------------------------------------
@@ -25,6 +43,11 @@ def ImportFromDirectory(targetPath, isReload = False):
 # 진입점.
 #------------------------------------------------------------------------
 if __name__ == "__main__":
+
+	index = 0
+	for path in sys.path:
+		print(f"[{index}] {path}")
+		index += 1
 
 	if not len(sys.argv):
 		print("[Blender] Argument is empty.")
@@ -53,9 +76,9 @@ if __name__ == "__main__":
 	# appArgs = sys.argv[2:]
 
 	# 스크립트 로드.
-	if projectFolder != "build":
-		ImportFromDirectory(f"{projectFolder}/framework", False)
-		ImportFromDirectory(f"{projectFolder}/src", False)
+	for extraPath in extraPaths:
+		ImportFromDirectory(extraPath, False)
+	# ImportFromDirectory(f"{projectFolder}/src", False)
 
 	print("app()")
 	if applicationType == "conversion_model_validator":

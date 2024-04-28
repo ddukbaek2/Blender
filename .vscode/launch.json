@@ -2,6 +2,18 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Run",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "${workspaceFolder}/tools/run.bat",
+			"args": [
+				"${workspaceFolder}",
+				"${workspaceFolder}/src/app.py",
+				"conversion_model_validator",
+			],
+            "cwd": "${workspaceFolder}"
+        },
+        {
             "name": "Debug",
             "type": "debugpy",
             "request": "launch",
