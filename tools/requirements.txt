@@ -2,3 +2,4 @@ pyinstaller
 pillow
 ptvsd
 shapely
+debugpy

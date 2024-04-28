@@ -25,6 +25,10 @@ def ImportFromDirectory(targetPath, isReload = False):
 # 진입점.
 #------------------------------------------------------------------------
 if __name__ == "__main__":
+	
+	import debugpy
+	debugpy.wait_for_client()
+
 	# 스크립트 로드.
 	executeFileName = pathlib.Path(__file__).resolve()
 	frameworkFolder = executeFileName.parent
@@ -37,26 +41,31 @@ if __name__ == "__main__":
 	if not len(sys.argv):
 		print("error.")
 	
-	applicationType = sys.argv[0].lower()
-	isDebug = sys.argv[1].lower() == "true"
- 
+	index = 0
+	for arg in sys.argv:
+		print(f"[{index}] {arg}")
+		index += 1
+
+	applicationFileName = sys.argv[0]
+	applicationType = sys.argv[1].lower()
+	appArgs = sys.argv[2:]
+
   	# # 디버그 서버 실행. 
 	# if isDebug:
 	# 	import ptvsd # type: ignore
 	# 	ptvsd.enable_attach(address = ("localhost", 5680))
 	# 	ptvsd.wait_for_attach()
-	# import ptvsd # type: ignore
-	# ptvsd.enable_attach(address = ("localhost", 5680))
-	# ptvsd.wait_for_attach()
 
-	# 실행파일 호출.
-	args = sys.argv[2:]
-	print("hello blender")
+	print("app()")
 	if applicationType == "conversion_model_validator":
 		print("conversion_model_validator()")
-		import conversion_model_validator
-		conversion_model_validator.main(args)
+		# import conversion_model_validator
+		# conversion_model_validator.main(args)
 	elif applicationType == "conversion_template_generator":
 		print("conversion_template_generator()")
-		import conversion_template_generator
-		conversion_template_generator.main(args)
+		# import conversion_template_generator
+		# conversion_template_generator.main(args)
+	else:
+		print("unknown_application()")
+
+	sys.exit()
