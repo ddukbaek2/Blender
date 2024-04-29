@@ -1,6 +1,7 @@
 #------------------------------------------------------------------------
 # 참조 목록.
 #------------------------------------------------------------------------
+import os
 import sys
 import importlib.util
 import pathlib
@@ -16,11 +17,19 @@ def ImportFromDirectory(targetPath, isReload = False):
 		sys.path.append(targetPath)
 		print(f"sys.path.append({targetPath})")
 	elif isReload:
-		for moduleName, module in list(sys.modules.items()):
-			if hasattr(module, "__file__") and module.__file__ and targetPath in module.__file__:
-				del sys.modules[moduleName]
-				importlib.import_module(moduleName)
-				print(f"importlib.import_module({moduleName})")
+		if len(sys.modules) > 0:
+			for moduleName, module in list(sys.modules.items()):
+				# if IsExcludeModules(moduleName):
+				# 	continue
+				# print(moduleName)
+				try:
+					if hasattr(module, "__file__") and module.__file__ and targetPath in module.__file__:
+						del sys.modules[moduleName]
+						importlib.import_module(moduleName)
+						print(f"importlib.import_module({moduleName})")
+				except Exception as exception:
+					# print(f"Reimport Exception ModuleName : '{moduleName}'")
+					continue
 
  
 #------------------------------------------------------------------------
@@ -52,12 +61,6 @@ if __name__ == "__main__":
 		print(f" - [{index}] {path}")
 		index += 1
 
-	# 파일위치 확인.
-	executeFilePath = pathlib.Path(__file__).resolve()
-	srcPath = executeFilePath.parent
-	projectPath = srcPath.parent
-	print(f"srcPath={srcPath}")
-
 	# 스크립트 로드.
 	extraPaths = [
         "C:/Program Files/Blender Foundation/Blender 4.0/4.0/scripts/startup",
@@ -74,11 +77,15 @@ if __name__ == "__main__":
         "C:/Program Files/Blender Foundation/Blender 4.0/4.0/scripts/addons",
         "C:/Program Files/Blender Foundation/Blender 4.0/4.0/scripts/addons_contrib",
         # "${userHome}/AppData/Roaming/Python/Python310/site-packages",
-        # "${userHome}/AppData/Roaming/Blender Foundation/Blender/4.0/scripts/addons/modules",
-        srcPath]
+        # "${userHome}/AppData/Roaming/Blender Foundation/Blender/4.0/scripts/addons/modules"
+		]
 	for extraPath in extraPaths:
 		ImportFromDirectory(extraPath, False)
-		ImportFromDirectory(extraPath, True)
+
+	sourcePath = os.path.dirname(os.path.abspath(__file__))
+	projectPath = os.path.dirname(sourcePath)
+	if sourcePath not in sys.path:
+		sys.path.append(sourcePath)
 
 	# 인자 여부 확인.
 	print("arguments()")
@@ -103,6 +110,7 @@ if __name__ == "__main__":
 	if altava.Altava.IsBuild:
 		applicationFileName = sys.argv[0] # 실행파일.
 		applicationType = sys.argv[1] # 애플리케이션 타입.
+		applicationMode = "none" # 애플리케이션 모드.
 		sys.argv = sys.argv[2:]
 		appArgs = sys.argv
 
@@ -112,10 +120,11 @@ if __name__ == "__main__":
 		sys.argv = sys.argv[3:]
 		applicationFileName = sys.argv[0] # 파이썬파일.
 		applicationType = sys.argv[2] # 애플리케이션 타입.
-		applicationMode = sys.argv[2] # 애플리케이션모드.
-		appArgs = sys.argv[3:]
+		applicationMode = sys.argv[3] # 애플리케이션 모드.
+		appArgs = sys.argv[4:]
 
-		altava.Altava.IsDebug = applicationMode == "debug" #sys.argv[0].find("blender.exe") > -1
+		#sys.argv[0].find("blender.exe") > -1
+		altava.Altava.IsDebug = applicationMode == "debug"
 		print(f"altava.Altava.IsDebug={altava.Altava.IsDebug}")
 
 		# 디버그모드일 경우 원격 디버거 실행.
