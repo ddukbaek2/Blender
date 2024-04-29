@@ -7,3 +7,6 @@
 - F5 : 디버그
 - Shift + F5 : 실행
 - Control + Shift + B : 빌드
+
+# 주의사항
+- Run And Debug는 Run 혹은 Build를 단 한번이라도 해야만 사용 가능 (pip 업데이트를 따로 해주는 구간이 없기 때문).

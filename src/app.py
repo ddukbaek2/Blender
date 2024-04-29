@@ -95,13 +95,13 @@ if __name__ == "__main__":
 		print("[Blender] Argument is empty.")
 		sys.exit(1)
 
-	# # 인자 목록.
-	# if len(sys.argv) > 0:
-	# 	print("sys.argv")
-	# 	index = 0
-	# 	for arg in sys.argv:
-	# 		print(f" - [{index}] {arg}")
-	# 		index += 1
+	# 인자 목록.
+	if len(sys.argv) > 0:
+		print("sys.argv")
+		index = 0
+		for arg in sys.argv:
+			print(f" - [{index}] {arg}")
+			index += 1
 
 	# 환경 체크.
 	import altava
@@ -125,9 +125,9 @@ if __name__ == "__main__":
 		# 미사용 인자들 제거.
 		sys.argv = sys.argv[3:]
 		applicationFileName = sys.argv[0] # 파이썬파일.
-		applicationType = sys.argv[2] # 애플리케이션 타입.
-		applicationMode = sys.argv[3] # 애플리케이션 모드.
-		sys.argv = sys.argv[4:]
+		applicationType = sys.argv[1] # 애플리케이션 타입.
+		applicationMode = sys.argv[2] # 애플리케이션 모드.
+		sys.argv = sys.argv[3:]
 		appArgs = sys.argv
 
 		#sys.argv[0].find("blender.exe") > -1

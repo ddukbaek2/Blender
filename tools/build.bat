@@ -1,7 +1,7 @@
 @echo off
 
 set BLENDERPATH=C:\Program Files\Blender Foundation\Blender 4.0
-set PYTHONPATH=C:\Program Files\Blender Foundation\Blender 4.0\4.0\python\bin
+set PYTHONPATH=%BLENDERPATH%\4.0\python\bin
 set PROJECTPATH=%1
 set TOOLSPATH=%PROJECTPATH%\tools
 set BUILDPATH=%PROJECTPATH%\build\bin
@@ -18,4 +18,4 @@ python.exe -m pip list
 python.exe -m ensurepip --upgrade >nul 2>&1
 python.exe -m pip install --upgrade pip >nul 2>&1
 python.exe -m pip install --user -r "%TOOLSPATH%\requirements.txt" >nul 2>&1
-python.exe -m PyInstaller -F --clean --onefile %2 --distpath "%BUILDPATH%" --specpath "%SPECPATH%" --name %3
+python.exe -m PyInstaller -F --clean --onefile "%2" --distpath "%BUILDPATH%" --specpath "%SPECPATH%" --name "%3"
