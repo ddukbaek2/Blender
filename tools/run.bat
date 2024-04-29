@@ -6,6 +6,7 @@ set PROJECTPATH=%1
 set TOOLSPATH=%PROJECTPATH%\tools
 set BUILDPATH=%PROJECTPATH%\build\bin
 set SPECPATH=%PROJECTPATH%\build\spec
+set HOOKSPATH=%PROJECTPATH%\hooks
 
 for /f "tokens=1 delims=:" %%a in ("%PYTHONPATH%") do set "PYTHONDRIVE=%%a:"
 for /f "tokens=1 delims=:" %%a in ("%BLENDERPATH%") do set "BLENDERDRIVE=%%a:"

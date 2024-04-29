@@ -6,7 +6,7 @@ set PROJECTPATH=%1
 set TOOLSPATH=%PROJECTPATH%\tools	
 set BUILDPATH=%PROJECTPATH%\build\bin
 set SPECPATH=%PROJECTPATH%\build\spec
-set HOOKPATH=%PROJECTPATH%\BUILD\hook
+set HOOKSPATH=%PROJECTPATH%\hooks
 
 for /f "tokens=1 delims=:" %%a in ("%PYTHONPATH%") do set "PYTHONDRIVE=%%a:"
 for /f "tokens=1 delims=:" %%a in ("%BLENDERPATH%") do set "BLENDERDRIVE=%%a:"
@@ -19,4 +19,4 @@ python.exe -m pip list
 python.exe -m ensurepip --upgrade >nul 2>&1
 python.exe -m pip install --upgrade pip >nul 2>&1
 python.exe -m pip install --user -r "%TOOLSPATH%\requirements.txt" >nul 2>&1
-python.exe -m PyInstaller -F --clean --onefile "%2" --distpath "%BUILDPATH%" --specpath "%SPECPATH%" --additional-hooks-dir="%HOOKPATH%" --name "%3"
+python.exe -m PyInstaller -F --clean --onefile "%2" --distpath "%BUILDPATH%" --specpath "%SPECPATH%" --additional-hooks-dir="%HOOKSPATH%" --name "%3"
