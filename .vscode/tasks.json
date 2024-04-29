@@ -44,7 +44,7 @@
                 "-ExecutionPolicy",
                 "Bypass",
                 "-Command",
-				"& '${workspaceFolder}/tools/build.bat' '${workspaceFolder}/tools/hook', '${workspaceFolder}' '${workspaceFolder}/src/app.py', 'tool'"
+				"& '${workspaceFolder}/tools/build.bat' '${workspaceFolder}' '${workspaceFolder}/src/app.py', 'tool'"
             ],
 			"runOptions": {
 				"instanceLimit": 1
