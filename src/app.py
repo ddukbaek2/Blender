@@ -4,18 +4,19 @@
 import os
 import sys
 import importlib.util
-import pathlib
 
 
 #------------------------------------------------------------------------
 # 스크립트 임포트.
 #------------------------------------------------------------------------
-def ImportFromDirectory(targetPath, isReload = False):
+def ImportFromDirectory(targetPath, isReload = False, isPrint = False):
 	if not targetPath:
+		print("ImportFromDirectory() : target is None")
 		return
 	if not targetPath in sys.path:
 		sys.path.append(targetPath)
-		print(f"sys.path.append({targetPath})")
+		if isPrint:
+			print(f"ImportFromDirectory() : sys.path.append({targetPath})")
 	elif isReload:
 		if len(sys.modules) > 0:
 			for moduleName, module in list(sys.modules.items()):
@@ -26,9 +27,11 @@ def ImportFromDirectory(targetPath, isReload = False):
 					if hasattr(module, "__file__") and module.__file__ and targetPath in module.__file__:
 						del sys.modules[moduleName]
 						importlib.import_module(moduleName)
-						print(f"importlib.import_module({moduleName})")
+						if isPrint:
+							print(f"ImportFromDirectory() : importlib.import_module({moduleName})")
 				except Exception as exception:
-					# print(f"Reimport Exception ModuleName : '{moduleName}'")
+					if isPrint:
+						print(f"ImportFromDirectory() : Reimport Exception ModuleName : '{moduleName}'")
 					continue
 
  
@@ -38,15 +41,15 @@ def ImportFromDirectory(targetPath, isReload = False):
 def Main(args : list) -> int:
 	print("app.Main()")
 	if applicationType == "conversion_model_validator":
-		print("conversion_model_validator()")
+		print("conversion_model_validator.main()")
 		import conversion_model_validator
 		return conversion_model_validator.main(appArgs)
 	elif applicationType == "conversion_template_generator":
-		print("conversion_template_generator()")
+		print("conversion_template_generator.main()")
 		import conversion_template_generator
 		return conversion_template_generator.main(appArgs)
 	else:
-		print("unknown_application()")
+		print("unknown_application")
 		return 1
 
 
@@ -54,12 +57,12 @@ def Main(args : list) -> int:
 # 파일 진입점.
 #------------------------------------------------------------------------
 if __name__ == "__main__":
-	# 경로 확인.
-	print("sys.path()")
-	index = 0
-	for path in sys.path:
-		print(f" - [{index}] {path}")
-		index += 1
+	# # 경로 목록.
+	# print("sys.path")
+	# index = 0
+	# for path in sys.path:
+	# 	print(f" - [{index}] {path}")
+	# 	index += 1
 
 	# 스크립트 로드.
 	extraPaths = [
@@ -87,15 +90,18 @@ if __name__ == "__main__":
 	if sourcePath not in sys.path:
 		sys.path.append(sourcePath)
 
-	# 인자 여부 확인.
-	print("arguments()")
+	# 인자가 없을 경우 오류 처리.
 	if not len(sys.argv):
 		print("[Blender] Argument is empty.")
 		sys.exit(1)
-	index = 0
-	for arg in sys.argv:
-		print(f" - [{index}] {arg}")
-		index += 1
+
+	# # 인자 목록.
+	# if len(sys.argv) > 0:
+	# 	print("sys.argv")
+	# 	index = 0
+	# 	for arg in sys.argv:
+	# 		print(f" - [{index}] {arg}")
+	# 		index += 1
 
 	# 환경 체크.
 	import altava
@@ -121,7 +127,8 @@ if __name__ == "__main__":
 		applicationFileName = sys.argv[0] # 파이썬파일.
 		applicationType = sys.argv[2] # 애플리케이션 타입.
 		applicationMode = sys.argv[3] # 애플리케이션 모드.
-		appArgs = sys.argv[4:]
+		sys.argv = sys.argv[4:]
+		appArgs = sys.argv
 
 		#sys.argv[0].find("blender.exe") > -1
 		altava.Altava.IsDebug = applicationMode == "debug"
@@ -135,6 +142,14 @@ if __name__ == "__main__":
 			print("Debug server listening on localhost:5680")
 			debugpy.wait_for_client()
 			print("Debugger client connected")
+
+	# 인자 목록.
+	if len(sys.argv) > 0:
+		print("sys.argv")
+		index = 0
+		for arg in sys.argv:
+			print(f" - [{index}] {arg}")
+			index += 1
 
 	# 시작.
 	exitCode = Main(appArgs)
