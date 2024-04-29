@@ -3,3 +3,4 @@ pillow
 ptvsd
 shapely
 debugpy
+mathutils

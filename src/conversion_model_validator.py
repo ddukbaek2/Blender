@@ -2,15 +2,9 @@ import bpy
 import os
 import math
 import json
-import sys
 import shutil
-
-# 현재 스크립트의 디렉토리를 가져옴
-script_dir = os.path.dirname(os.path.abspath(__file__))
-# 스크립트 디렉토리를 Python의 검색 경로에 추가
-if script_dir not in sys.path:
-    sys.path.append(script_dir)
 import blender_common
+
 
 # 1. 텍스처 포함 여부 확인
 def check_textures(fbx_path):
@@ -363,12 +357,10 @@ def set_units_to_centimeters():
 
 def main(args : list):
     # '--' 인수 뒤에 오는 파일 경로를 가져옵니다.
-    if '--' in sys.argv:
-        file_path_arg_index = sys.argv.index('--') + 1
-        if file_path_arg_index < len(sys.argv):
-            file_path = sys.argv[file_path_arg_index]
-            file_name, _ = os.path.splitext(file_path)  # 확장자 제거
-
+    if len(args) > 0:        
+        file_path = args[0]
+        file_name, file_extension = os.path.splitext(file_path)  # 확장자 제거
+        if file_extension.lower() == ".fbx":
             if os.path.isfile(f"{script_dir}/{file_name}_report.json"):
                 os.remove(f"{script_dir}/{file_name}_report.json")
             
@@ -400,6 +392,8 @@ def main(args : list):
             print("Error: FBX file path not provided.")
     else:
         print("Error: '--' argument separator not found.")
+
+    return 0
 
 # # # # 테스트 코드
 # file_path = 'sample_resources/model.fbx'

@@ -1,25 +1,33 @@
 {
     "version": "0.2.0",
     "configurations": [
+        // {
+        //     "name": "Run",
+        //     "type": "PowerShell",
+        //     "request": "launch",
+        //     "script": "${workspaceFolder}/tools/run.bat",
+		// 	"args": [
+		// 		"${workspaceFolder}",
+		// 		"${workspaceFolder}/src/app.py",
+		// 		"conversion_model_validator",
+		// 	],
+        //     "cwd": "${workspaceFolder}"
+        // },
         {
-            "name": "Run",
-            "type": "PowerShell",
-            "request": "launch",
-            "script": "${workspaceFolder}/tools/run.bat",
-			"args": [
-				"${workspaceFolder}",
-				"${workspaceFolder}/src/app.py",
-				"conversion_model_validator",
-			],
-            "cwd": "${workspaceFolder}"
-        },
-        {
-            "name": "Debug",
+            "name": "Debug & Run",
             "type": "debugpy",
-            "request": "launch",
-            "args": ["${workspaceFolder}", "conversion_model_validator"],
-            "program": "${workspaceFolder}/src/app.py",// ${file}
-            "console": "integratedTerminal"
+            "request": "attach",
+            "preLaunchTask": "Debug",
+            "connect": {
+                "host": "localhost",
+                "port": 5680
+            },
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}",
+                    "remoteRoot": "."
+                }
+            ],
         }
     ]
 }

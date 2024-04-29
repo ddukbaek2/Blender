@@ -5,6 +5,7 @@ import sys
 import shutil
 from PIL import Image
 from datetime import datetime
+import blender_common
 
 
 def find_models(folder_src_path):
@@ -221,7 +222,7 @@ def main(args : list):
     # 스크립트 디렉토리를 Python의 검색 경로에 추가
     if script_dir not in sys.path:
         sys.path.append(script_dir)
-    import blender_common
+    
 
     # 현재 날짜와 시간을 얻어옴
     now = datetime.now()
@@ -300,3 +301,5 @@ def main(args : list):
 
     print(f'model_dict:\n{model_dict}')
     print('')
+
+    return 0

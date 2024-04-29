@@ -2,6 +2,39 @@
 	"version": "2.0.0",
 	"tasks": [
         {
+            "label": "Debug",
+            "type": "shell",
+            "command": "C:/Program Files/Blender Foundation/Blender 4.0/blender.exe",
+            "args": [
+                "--background",
+                "--python",
+				"${workspaceFolder}/src/app.py",
+                "conversion_template_generator"//"conversion_model_validator"
+            ],
+            "isBackground": true,
+            "problemMatcher": {
+                "pattern": {
+                    "regexp": ".*",
+                    "file": 0,
+                    "location": 1,
+                    "message": 2
+                },
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "^.*Start Blender Debug Server.*$",
+                    "endsPattern": "^.*Debug server listening on.*$"                    
+                }
+            },
+            "presentation": {
+                "reveal": "silent",
+                "focus": false
+            },
+            "group": {
+                "kind": "none",
+                "isDefault": true
+            }
+        },
+        {
 			"label": "Build",
 			"type": "shell",
 			"command": "powershell.exe",
@@ -10,7 +43,7 @@
                 "-ExecutionPolicy",
                 "Bypass",
                 "-Command",
-				"& '${workspaceFolder}/tools/build.bat' '${workspaceFolder}' '${workspaceFolder}/src/app.py', 'conversion_model_validator'"
+				"& '${workspaceFolder}/tools/build.bat' '${workspaceFolder}' '${workspaceFolder}/src/app.py', 'tool'"
             ],
 			"runOptions": {
 				"instanceLimit": 1
