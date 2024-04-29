@@ -20,4 +20,4 @@ python.exe -m pip install --user -r %TOOLSPATH%\requirements.txt >nul 2>&1
 
 %BLENDERDRIVE%
 cd %BLENDERPATH%
-blender.exe --background --python %2 -- %3
+blender.exe --background --python %2 -- %3 %4

@@ -1,18 +1,19 @@
 {
     "version": "0.2.0",
     "configurations": [
-        // {
-        //     "name": "Run",
-        //     "type": "PowerShell",
-        //     "request": "launch",
-        //     "script": "${workspaceFolder}/tools/run.bat",
-		// 	"args": [
-		// 		"${workspaceFolder}",
-		// 		"${workspaceFolder}/src/app.py",
-		// 		"conversion_template_generator", //"conversion_model_validator",
-		// 	],
-        //     "cwd": "${workspaceFolder}"
-        // },
+        {
+            "name": "Run",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "${workspaceFolder}/tools/run.bat",
+			"args": [
+				"${workspaceFolder}",
+				"${workspaceFolder}/src/app.py",
+				"conversion_template_generator", //"conversion_model_validator",
+                "none",
+			],
+            "cwd": "${workspaceFolder}"
+        },
         {
             "name": "Run And Debug",
             "type": "debugpy",

@@ -9,7 +9,8 @@
                 "--background",
                 "--python",
 				"${workspaceFolder}/src/app.py",
-                "conversion_template_generator"//"conversion_model_validator"
+                "conversion_template_generator", //"conversion_model_validator",
+                "debug"
             ],
             "isBackground": true,
             "problemMatcher": {
