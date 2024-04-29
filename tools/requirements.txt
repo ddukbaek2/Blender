@@ -1,3 +1,4 @@
+bpy @ file:///D:/Github/Blender/libs/bpy-4.0.0-cp310-cp310-win_amd64.whl#sha256=57e66dcf1a99e0bdbb8fbaad52e6c922b9454e3b9a06ce698852ab66bc6a31b1
 pyinstaller
 pillow
 ptvsd
