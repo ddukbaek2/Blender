@@ -7,6 +7,14 @@ from PIL import Image
 from datetime import datetime
 import blender_common
 
+model_dict = {}
+model_path = str()
+process_path = str()
+vw_datas = str()
+idmap_export = False
+silhouettes_export = False
+extract_to_path = str()
+
 
 def find_models(folder_src_path):
     model_info = {}
@@ -291,7 +299,7 @@ def main(args : list):
     print(f'silhouettes_export:\t{silhouettes_export}')
     print('')
 
-    model_dict = {}
+    
     for root, dirs, files in os.walk(model_path):
         for model_folder_name in dirs:
             model_root = os.path.join(model_path, model_folder_name)
