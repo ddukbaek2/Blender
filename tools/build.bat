@@ -18,4 +18,4 @@ python.exe -m pip list
 python.exe -m ensurepip --upgrade >nul 2>&1
 python.exe -m pip install --upgrade pip >nul 2>&1
 python.exe -m pip install --user -r "%TOOLSPATH%\requirements.txt" >nul 2>&1
-python.exe -m PyInstaller -F --clean --onefile "%2" --distpath "%BUILDPATH%" --specpath "%SPECPATH%" --name "%3"
+python.exe -m PyInstaller -F --clean --onefile --additional-hooks-dir="%2" "%3" --distpath "%BUILDPATH%" --specpath "%SPECPATH%" --name "%4"

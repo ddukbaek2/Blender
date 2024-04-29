@@ -5,7 +5,7 @@
 - 블렌더는 꼭 기본폴더에 설치 할 것.
 - VSCODE를 관리자모드로 실행 필수 (패키지 설치 오류)
 - F5 : 디버그
-- Shift + F5 : 실행
+- Shift + F5 : 실행 (사용안함. 디버그와 실행의 구분은 Run or Run And Debug)
 - Control + Shift + B : 빌드
 
 # 주의사항
