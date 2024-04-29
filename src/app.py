@@ -70,7 +70,6 @@ if __name__ == "__main__":
 	# bpy 참조 오류.
 	isDebug = sys.argv[0].find("blender.exe") > -1
 	isBuild = getattr(sys, 'frozen', False) # isDebug == False
-
 	
 	if isDebug:
 		# 디버그모드일 때는 블렌더 기준으로 인자가 잡혀서 0,1,2는 쓸모가 없음.
